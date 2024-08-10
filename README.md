@@ -13,7 +13,7 @@ Read 2: Contains the spatial Barcode A, Barcode B and UMIs
 ### Reformat FASTQ Read 2 file
 The Read 2 sequence needs to be reformated to run [ST Pipeline](https://github.com/SpatialTranscriptomicsResearch/st_pipeline), as explained in the following figure. Due to experimental design of Patho-DBiT, the Read 2 is equal to the "Read 1" in ST pipeline, while Read 1 will be the "Read 2".
 
-To reformat the Read 2, run the 'fastq_process.py'.
+To reformat the Read 2, run 'FASTQ_process.sh'.
 
 All raw Read 1 and reformatted Read 2 files can be downloaded from the NCBI Gene Expression Omnibus (GEO) under the accession number XXXXXXXX 
 
@@ -25,5 +25,5 @@ The pipeline requires a spatial barcode index file to decode spatial locations. 
 The Mouse GRCm38-mm10 or human GRCh38 reference genome was used with STAR v2.7.7a.
 
 ### Convert ENSEMBL ID to gene name
-Run Convert_ENSEMBL_to_gene_name.sh to annotate the matrix output from the ST pipeline.
+Run 'Convert_ENSEMBL_to_gene_name.sh' to annotate the matrix output from the ST pipeline.
 
