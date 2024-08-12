@@ -29,3 +29,8 @@ Run 'Convert_ENSEMBL_to_gene_name.sh' to annotate the matrix output from the ST 
 
 ## 2. Read mapping of non-coding RNA species
 
+
+## 3. Spatial alternative splicing analysis
+
+## 4. Spatial adenosine-to-inosine (A-to-I) RNA editing analysis
+
