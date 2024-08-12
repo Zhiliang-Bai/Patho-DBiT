@@ -79,13 +79,13 @@ scv.tl.recover_dynamics(adata2)
 scv.tl.velocity(adata2, mode = "steady_state")
 scv.tl.velocity_graph(adata2)
 scv.tl.latent_time(adata2)
-scv.pl.velocity_embedding_stream(adata2, basis='X_umap', save='LM0623_umap_all_arrow2.pdf' ,color = "clusters")
+scv.pl.velocity_embedding_stream(adata2, basis='X_umap', save='Sample_name_umap_all_arrow2.pdf' ,color = "clusters")
 
 adata3 = adata2[np.isin(adata2.obs['clusters'], ['6','7','14','18']),]
 scv.pp.neighbors(adata3)
 scv.tl.velocity_graph(adata3)
-scv.pl.velocity_embedding_stream(adata3, basis='X_umap',color = "clusters", save='LM0623_umap_tumor_arrow2.svg', figsize=(7,5), legend_fontsize = 9, density = 0.75, title='') 
-scv.pl.velocity_embedding_grid(adata3, fontsize = 0, size = 300, color = "clusters", arrow_size= 2, arrow_length= 1.5, save='LM0623_slide_tumor_grid_GridArrow2.pdf', arrow_color='black', scale = 2, basis='X_Space',legend_loc='none', smooth = 0.8,n_neighbors=8)
+scv.pl.velocity_embedding_stream(adata3, basis='X_umap',color = "clusters", save='Sample_name_umap_tumor_arrow2.svg', figsize=(7,5), legend_fontsize = 9, density = 0.75, title='') 
+scv.pl.velocity_embedding_grid(adata3, fontsize = 0, size = 300, color = "clusters", arrow_size= 2, arrow_length= 1.5, save='Sample_name_slide_tumor_grid_GridArrow2.pdf', arrow_color='black', scale = 2, basis='X_Space',legend_loc='none', smooth = 0.8,n_neighbors=8)
 
 
 from matplotlib.colors import LinearSegmentedColormap
@@ -95,10 +95,10 @@ n_bins = 100  # Increase this number for a smoother transition
 cmap_name = "Pseudotime"
 cm = LinearSegmentedColormap.from_list(cmap_name, colors, N=n_bins)
 
-scv.pl.scatter(adata2, color='velocity_pseudotime', basis='X_umap', save='LM0623_umap_all_PseudoTime2.pdf', color_map=cm, perc=[2, 98], colorbar=True, rescale_color=[0,1])
-scv.pl.scatter(adata2, color='velocity_pseudotime', basis='X_Space', save='LM0623_slide_all_PseudoTime2.pdf', color_map=cm, perc=[2, 98], size = 80, colorbar=True, rescale_color=[0,1])
-scv.pl.scatter(adata3, color='velocity_pseudotime', basis='X_umap', save='LM0623_umap_tumor_PseudoTime2.pdf', color_map=cm, perc=[2, 98], colorbar=True, rescale_color=[0,1])
-scv.pl.scatter(adata3, color='velocity_pseudotime', basis='X_Space', save='LM0623_slide_tumor_PseudoTime2.pdf', color_map=cm, perc=[2, 98], size = 80, colorbar=True, rescale_color=[0,1])
+scv.pl.scatter(adata2, color='velocity_pseudotime', basis='X_umap', save='Sample_name_umap_all_PseudoTime2.pdf', color_map=cm, perc=[2, 98], colorbar=True, rescale_color=[0,1])
+scv.pl.scatter(adata2, color='velocity_pseudotime', basis='X_Space', save='Sample_name_slide_all_PseudoTime2.pdf', color_map=cm, perc=[2, 98], size = 80, colorbar=True, rescale_color=[0,1])
+scv.pl.scatter(adata3, color='velocity_pseudotime', basis='X_umap', save='Sample_name_umap_tumor_PseudoTime2.pdf', color_map=cm, perc=[2, 98], colorbar=True, rescale_color=[0,1])
+scv.pl.scatter(adata3, color='velocity_pseudotime', basis='X_Space', save='Sample_name_slide_tumor_PseudoTime2.pdf', color_map=cm, perc=[2, 98], size = 80, colorbar=True, rescale_color=[0,1])
 
 
 
