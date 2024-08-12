@@ -1,27 +1,8 @@
-bash pipeline/VCF2Mut/VCF2mut.sh bcd result/SNV_Matrix/ result/LM0623_map/RNA/splitedBams/pixels/ result/Strelka/DNA/somatic/results/variants/somatic.snvs.vcf.gz /home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
-bash pipeline/VCF2Mut/VCF2mut.sh cd result/SomaticMatrix/ result/LM0623_map/RNA/splitedBams/pixels/ result/SomaticMatrix/PASS.site.pos.txt /home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This is the order of the workflow:
+bash pipeline/BWAmap.sh
+bash pipeline/LM0623-hg38_mut.sh
+bash pipeline/Mut_Matrix.sh	
+bash pipeline/analyzeCNV.sh	
 
 
 
