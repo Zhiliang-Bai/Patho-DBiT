@@ -6,7 +6,7 @@ conda install bioconda::cgranges # https://github.com/lh3/cgranges https://anaco
 collect_editing_site_py=collect_editing_sites.py
 
 # input bam
-in_bam="Path to input spatial RNA-seq bam" # input bam
+in_bam="Path to input Patho-DBiT bam" # input bam
 
 # spatial information
 pixel_to_clu_ID_tsv="/Path to spatial barcode files/pixel_to_clu_ID.tsv" # eg: 1x50 2
