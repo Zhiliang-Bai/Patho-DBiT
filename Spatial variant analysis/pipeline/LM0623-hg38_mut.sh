@@ -41,6 +41,8 @@ bash pipeline/VCF2Mut/VCF2mut.sh bcd VarMAT_RNAgermline/ SampleBam.list RNA_germ
 Rscript scripts/FilterGermlineMut-RNA.R
 bash pipeline/VCF2Mut/VCF2mut.sh cd VarMAT_FiltGermlineRNAvar/ Sample_name/splited_RNA_Bams/pixels/ VarMAT_FiltGermlineRNAvar/PASS.site.pos.txt Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
 # unsupervised clustering using matrix in VarMAT_FiltGermlineRNAvar/ and get cluster_and_position_by_snv.csv
+# similar clustering could be done using the same strategy for different input RNA bams from other samples
+
 perl scripts/split_fa_cluster.pl -r cluster_and_position_by_snv.csv -i bam4mut.bam -o Sample_Tumor/splitedBams/SNVcluster
 # get normal_SNVcluster.bam and tumor_SNVcluster.bam from normal clusters in Sample_Tumor/splitedBams/SNVcluster
 configureStrelkaGermlineWorkflow.py --bam normal_SNVcluster.bam --referenceFasta Homo_sapiens.GRCh38.dna.fa --rna --runDir normal_SNVcluster_germline/
