@@ -31,15 +31,6 @@ cat gencode/gencode.vM34.annotation.gtf | egrep -v '^#' | awk '/Gm55767|Gm56322|
 
 
 
-#processing piRBase gtf:
-########################################
-########################################
-cd piRBase/
-sbatch 4cmd.sh
-########################################
-########################################
-
-
 
 
 
@@ -68,7 +59,6 @@ cat GtRNAdb/mm39-tRNAs.fa.txt | grep '>' | awk 'BEGIN{OFS="\t"} {split($(NF-1), 
 python3 modGTF.py -i gencode/gencode.vM34.formod.gtf  -T gene_type -G gene_name -f gencode/gencode.vM34.mod.gtf
 python3 modGTF.py -i RNAcentral/mouse/vault_RNA.gtf   -T gene_type -G gene_name -f RNAcentral/mouse/vault_RNA.mod.gtf
 python3 modGTF.py -i RNAcentral/mouse/Y_RNA.gtf   -T gene_type -G gene_name -f RNAcentral/mouse/Y_RNA.mod.gtf
-python3 modGTF.py -i piRBase/mmu.piRNA_mm39.gtf   -T gene_type -G gene_id -f piRBase/mmu.piRNA.mod.gtf
 ########################################
 ########################################
 
@@ -81,8 +71,7 @@ python3 modGTF.py -i piRBase/mmu.piRNA_mm39.gtf   -T gene_type -G gene_id -f piR
 #final gtfs
 ########################################
 ########################################
-python3 clpsGTF.py -i GtRNAdb/mm39-tRNAs.mod.gtf:gencode/gencode.vM34.mod.gtf:RNAcentral/mouse/vault_RNA.mod.gtf:RNAcentral/mouse/Y_RNA.mod.gtf:piRBase/mmu.piRNA.mod.gtf -o mmu.all.gtf -C
-cat mmu.all.gtf | grep -v __piRNA > mmu.no_piRNA.gtf
+python3 clpsGTF.py -i GtRNAdb/mm39-tRNAs.mod.gtf:gencode/gencode.vM34.mod.gtf:RNAcentral/mouse/vault_RNA.mod.gtf:RNAcentral/mouse/Y_RNA.mod.gtf -o mmu.all.gtf -C
 ########################################
 ########################################
 

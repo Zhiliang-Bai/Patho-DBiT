@@ -36,16 +36,6 @@ cat gencode/gencode.v45.annotation.gtf | egrep -v '^#' | awk '/gene_name "Y_RNA"
 
 
 
-########################################
-########################################
-cd piRBase/
-sbatch 4cmd.sh
-########################################
-########################################
-
-
-
-
 
 
 
@@ -72,7 +62,6 @@ cat GtRNAdb/hg38-tRNAs.fa.txt | grep '>' | awk 'BEGIN{OFS="\t"} {split($(NF-1), 
 python3 modGTF.py -i gencode/gencode.v45.formod.gtf   -T gene_type -G gene_name -f gencode/gencode.v45.mod.gtf
 python3 modGTF.py -i RNAcentral/human/vault_RNA.gtf   -T gene_type -G gene_name -f RNAcentral/human/vault_RNA.mod.gtf
 python3 modGTF.py -i RNAcentral/human/Y_RNA.gtf   -T gene_type -G gene_name -f RNAcentral/human/Y_RNA.mod.gtf
-python3 modGTF.py -i piRBase/hsa.piRNA.gtf        -T gene_type -G gene_id -f piRBase/hsa.piRNA.mod.gtf
 ########################################
 ########################################
 
@@ -85,8 +74,7 @@ python3 modGTF.py -i piRBase/hsa.piRNA.gtf        -T gene_type -G gene_id -f piR
 #final gtfs
 ########################################
 ########################################
-python3 clpsGTF.py -i GtRNAdb/hg38-tRNAs.mod.gtf:RNAcentral/human/vault_RNA.mod.gtf:RNAcentral/human/Y_RNA.mod.gtf:gencode/gencode.v45.mod.gtf:piRBase/hsa.piRNA.mod.gtf -o hsa.all.gtf
-cat hsa.all.gtf | grep -v __piRNA > hsa.no_piRNA.gtf
+python3 clpsGTF.py -i GtRNAdb/hg38-tRNAs.mod.gtf:RNAcentral/human/vault_RNA.mod.gtf:RNAcentral/human/Y_RNA.mod.gtf:gencode/gencode.v45.mod.gtf -o hsa.all.gtf
 ########################################
 ########################################
 
