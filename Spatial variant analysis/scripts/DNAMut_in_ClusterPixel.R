@@ -1,7 +1,7 @@
 library(ggplot2)
 library(Cairo)
 
-clusters = read.table("/home/dz287/gibbs/scRNAmir/data/FFPE/Clusters/Cluster_and_spatial.id_LM0623_Large.csv", header = TRUE, sep = ',', stringsAsFactors = FALSE)
+clusters = read.table("scRNAmir/data/FFPE/Clusters/Cluster_and_spatial.id_LM0623_Large.csv", header = TRUE, sep = ',', stringsAsFactors = FALSE)
 clusterkinds = unique(clusters[,2])
 
 mutin = fread('result/VarMAT/Pixel/FiltDNAvar/mutratiostr.mat')

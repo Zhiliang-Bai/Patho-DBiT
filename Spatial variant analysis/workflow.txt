@@ -1,5 +1,5 @@
-sbatch pipeline/VCF2Mut/VCF2mut.sh bcd result/SNV_Matrix/ result/LM0623_map/RNA/splitedBams/pixels/ result/Strelka/DNA/somatic/results/variants/somatic.snvs.vcf.gz /home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
-sbatch pipeline/VCF2Mut/VCF2mut.sh cd result/SomaticMatrix/ result/LM0623_map/RNA/splitedBams/pixels/ result/SomaticMatrix/PASS.site.pos.txt /home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
+bash pipeline/VCF2Mut/VCF2mut.sh bcd result/SNV_Matrix/ result/LM0623_map/RNA/splitedBams/pixels/ result/Strelka/DNA/somatic/results/variants/somatic.snvs.vcf.gz /home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
+bash pipeline/VCF2Mut/VCF2mut.sh cd result/SomaticMatrix/ result/LM0623_map/RNA/splitedBams/pixels/ result/SomaticMatrix/PASS.site.pos.txt /home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/Homo_sapiens.GRCh38.dna.fa pipeline/VCF2Mut/
 
 
 
@@ -9,114 +9,10 @@ sbatch pipeline/VCF2Mut/VCF2mut.sh cd result/SomaticMatrix/ result/LM0623_map/RN
 
 
 
-bcftools view -f PASS result/Strelka/DNA/tumor_germline/results/variants/variants.vcf.gz > cache/DNA_tumor.vcf
-bcftools view -f PASS result/Strelka/DNA/normal_germline/results/variants/variants.vcf.gz > cache/DNA_normal.vcf
-cat cache/DNA_tumor.vcf cache/DNA_normal.vcf > cache/DNA_germline.vcf
-
-egrep -v '^#' cache/DNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/dna.pos.txt
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/rna.pos.txt
 
 
 
 
-egrep -v '^#' cache/DNA_germline.vcf |  awk '{print $1 "\t" $2}' | sort | uniq > cache/DNA_germline.txt
-cat cache/RNA_germline.txt cache/DNA_germline.txt | sort | uniq > cache/DNARNA_germline.txt
-
- 
-
-
-
-
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq | wc -l
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 "\t" $2}' | sort | uniq | wc -l
-
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | wc -l
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 "\t" $2}' | wc -l
-
-
-
-
-zcat result/Strelka/DNA/tumor_germline/results/variants/variants.vcf.gz > cache/DNA_tumor_all.vcf
-zcat result/Strelka/DNA/normal_germline/results/variants/variants.vcf.gz > cache/DNA_normal_all.vcf
-cat cache/DNA_tumor_all.vcf cache/DNA_normal_all.vcf > cache/DNA_germline_all.vcf
-bcftools view -f PASS result/Strelka/DNA/tumor_germline/results/variants/variants.vcf.gz > cache/DNA_tumor.vcf
-bcftools view -f PASS result/Strelka/DNA/normal_germline/results/variants/variants.vcf.gz > cache/DNA_normal.vcf
-cat cache/DNA_tumor.vcf cache/DNA_normal.vcf > cache/DNA_germline.vcf
-egrep -v '^#' cache/DNA_normal_all.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/dna.pos_all.txt
-egrep -v '^#' cache/DNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/dna.pos.txt
-
-
-rnain=result/Strelka/RNA/germline/results/variants/variants.vcf.gz
-zcat $rnain > cache/RNA_germline_all.vcf
-bcftools view -f PASS $rnain > cache/RNA_germline.vcf
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/rna.pos.txt
-grep -f cache/rna.pos.txt cache/dna.pos.txt | wc -l
-grep -f cache/rna.pos.txt cache/dna.pos_all.txt | wc -l
-cat cache/rna.pos.txt | wc -l
-
-
-rnain=result/Strelka/RNA/germline0/results/variants/variants.vcf.gz
-zcat $rnain > cache/RNA_germline_all.vcf
-bcftools view -f PASS $rnain > cache/RNA_germline.vcf
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/rna.pos.txt
-grep -f cache/rna.pos.txt cache/dna.pos.txt | wc -l
-grep -f cache/rna.pos.txt cache/dna.pos_all.txt | wc -l
-cat cache/rna.pos.txt | wc -l
-
-rnain=result/Strelka/RNA/germline1/results/variants/variants.vcf.gz
-zcat $rnain > cache/RNA_germline_all.vcf
-bcftools view -f PASS $rnain > cache/RNA_germline.vcf
-egrep -v '^#' cache/RNA_germline.vcf |  awk '{print $1 ":" $2 ":" $4 ":" $5}' | sort | uniq > cache/rna.pos.txt
-grep -f cache/rna.pos.txt cache/dna.pos.txt | wc -l
-grep -f cache/rna.pos.txt cache/dna.pos_all.txt | wc -l
-cat cache/rna.pos.txt | wc -l
-
-
-
-
-
-
-
-#######################################################
-##########观察snv是不是在cnv区域分布的更多，但是其实后面根本没有用到
-##
-##module load BCFtools BEDTools 
-##cat /home/dz287/Mark/DNAmut/result/CNV/dedup_tmr.call.cns  | cut -f 1,2,3,6 | sed -n '2,$p' | egrep -v '^[XY]'  > cnv.bed
-##zcat /home/dz287/Mark/DNAmut/result/Strelka/DNA/somatic/results/variants/somatic.snvs.vcf.gz | grep -v '#' | grep 'PASS' | awk '{print $1 "\t" $2-1 "\t" $2}' | egrep -v '^[XY]' > vcf.bed
-###bcftools filter -i 'DP > 10' /home/dz287/Mark/DNAmut/result/Strelka/DNA/somatic/results/variants/somatic.snvs.vcf.gz | grep -v '#' | grep 'PASS' | awk '{print $1 "\t" $2-1 "\t" $2}' | egrep -v '^[XY]' > vcf.bed
-##awk '{ gene_lengths[$4] += $3 - $2} END { for (gene in gene_lengths) { print gene "\t" gene_lengths[gene] } }' cnv.bed 
-##bedtools intersect -wa -wb -a vcf.bed -b cnv.bed | cut -f 7 | sort | uniq -c
-##join -1 2 -2 2 1.temp 2.temp
-##
-##module load BCFtools BEDTools 
-##cat /home/dz287/Mark/DNAmut/result/CNV/cnvkit/dedup_tmr.call.cns  | cut -f 1,2,3,6 | sed -n '2,$p' | egrep -v '^[XY]'  > cnv.bed
-##zcat /home/dz287/Mark/DNAmut/result/Strelka/DNA/somatic/results/variants/somatic.snvs.vcf.gz | grep -v '#' | awk '{print $1 "\t" $2-1 "\t" $2}' | egrep -v '^[XY]' > vcf.bed
-##awk '{ gene_lengths[$4] += $3 - $2} END { for (gene in gene_lengths) { print gene_lengths[gene] "\t" gene } }' cnv.bed > 1.temp
-##bedtools intersect -wa -wb -a vcf.bed -b cnv.bed | cut -f 7 | sort | uniq -c | sed -E 's/^ +//g' | sed -E 's/ +/\t/g'  > 2.temp
-##join -1 2 -2 2 1.temp 2.temp
-##
-##
-##module load BCFtools BEDTools 
-##cat /home/dz287/Mark/DNAmut/result/CNV/dedup_tmr.call.cns  | cut -f 1,2,3,6 | sed -n '2,$p' | egrep -v '^[XY]'  > cnv.bed
-##zcat /home/dz287/Mark/DNAmut/result/Strelka/RNA/somatic/results/variants/somatic.snvs.vcf.gz | grep -v '#' | awk '{print $1 "\t" $2-1 "\t" $2}' | egrep -v '^[XY]' > vcf.bed
-##awk '{ gene_lengths[$4] += $3 - $2} END { for (gene in gene_lengths) { print gene_lengths[gene] "\t" gene } }' cnv.bed > 1.temp
-##bedtools intersect -wa -wb -a vcf.bed -b cnv.bed | cut -f 7 | sort | uniq -c | sed -E 's/^ +//g' | sed -E 's/ +/\t/g'  > 2.temp
-##join -1 2 -2 2 1.temp 2.temp
-##
-##module load BCFtools BEDTools 
-##cat /home/dz287/Mark/DNAmut/result/CNV/dedup_tmr.call.cns  | cut -f 1,2,3,6 | sed -n '2,$p' | egrep -v '^[XY]'  > cnv.bed
-##cat /home/dz287/Mark/DNAmut/result/VarMAT/Pixel/ChisqFiltDNAvar/PASS.site | grep -v '#' | awk '{print $1 "\t" $2-1 "\t" $2}' | egrep -v '^[XY]' > vcf.bed
-##awk '{ gene_lengths[$4] += $3 - $2} END { for (gene in gene_lengths) { print gene_lengths[gene] "\t" gene } }' cnv.bed > 1.temp
-##bedtools intersect -wa -wb -a vcf.bed -b cnv.bed | cut -f 7 | sort | uniq -c | sed -E 's/^ +//g' | sed -E 's/ +/\t/g'  > 2.temp
-##join -1 2 -2 2 1.temp 2.temp
-##
-##
-##module load BCFtools BEDTools 
-##cat /home/dz287/Mark/DNAmut/result/CNV/dedup_tmr.call.cns  | cut -f 1,2,3,6 | sed -n '2,$p' | egrep -v '^[XY]'  > cnv.bed
-##cat /home/dz287/Mark/DNAmut/result/VarMAT/Pixel/FiltDNAvar/PASS.site | grep -v '#' | awk '{print $1 "\t" $2-1 "\t" $2}' | egrep -v '^[XY]' > vcf.bed
-##awk '{ gene_lengths[$4] += $3 - $2} END { for (gene in gene_lengths) { print gene_lengths[gene] "\t" gene } }' cnv.bed > 1.temp
-##bedtools intersect -wa -wb -a vcf.bed -b cnv.bed | cut -f 7 | sort | uniq -c | sed -E 's/^ +//g' | sed -E 's/ +/\t/g'  > 2.temp
-##join -1 2 -2 2 1.temp 2.temp
 
 
 

@@ -102,14 +102,14 @@ getdrawmat0 <- function(vcfinfile,chromlength,segmentlen,ratio = TRUE){
 alllist = list()
 h = 60
 segmentlen=10000
-chromlenslist = chromlens('/home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/StarIndex/chrNameLength.txt',h=h*0.2,segmentlen=segmentlen)
+chromlenslist = chromlens('scRNAmir/data/Genomes/GRCh38/StarIndex/chrNameLength.txt',h=h*0.2,segmentlen=segmentlen)
 drawmat = getdrawmat0('result/VarMAT/Pixel/FiltGermlineRNAvar/PASS.site.pos.txt',chromlenslist[[1]],segmentlen)
 alllist[['all']] = drawmat
 
 for (variable in 0:8) {
   h = 60
   segmentlen=10000
-  chromlenslist = chromlens('/home/dz287/gibbs/scRNAmir/data/Genomes/GRCh38/StarIndex/chrNameLength.txt',h=h*0.2,segmentlen=segmentlen)
+  chromlenslist = chromlens('scRNAmir/data/Genomes/GRCh38/StarIndex/chrNameLength.txt',h=h*0.2,segmentlen=segmentlen)
   drawmat = getdrawmat(paste0('result/Figures/VCFs4Figs/filteredSNVclusters',variable,'.vcf'),chromlenslist[[1]],segmentlen)
   alllist[[as.character(variable)]] = drawmat
 }
