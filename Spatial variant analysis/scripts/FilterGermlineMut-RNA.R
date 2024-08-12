@@ -13,7 +13,7 @@ norcount = allcount-mutcount
 datain = data.frame(datain[,1],mutcount[,1]+mutcount[,2],mutcount[,3]+mutcount[,4])
 colnames(datain) = c('location','DNA','RNA')
 
-write.table(datain[datain[,3] >= 10,1], file = "VarMAT_RNAgermline/PASS.site.pos.txt", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
+write.table(datain[datain[,3] >= 10,1], file = "VarMAT_FiltGermlineRNAvar/PASS.site.pos.txt", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
 
 richwhether = mutcount > 0.3*allcount
 datain$DNAexists = richwhether[,1] | richwhether[,2]
