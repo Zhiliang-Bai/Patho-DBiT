@@ -46,10 +46,7 @@ fine_nameit <- function(bedin,bedout){
 }
 
 
-fine_nameit('compare_nc/result/S_PAP/expmat.bed','compare_nc/result/S_PAP/fined_expmat.bed')
-fine_nameit('compare_nc/result/S_Nor/expmat.bed','compare_nc/result/S_Nor/fined_expmat.bed')
-fine_nameit('compare_nc/result/Z_Nor/expmat.bed','compare_nc/result/Z_Nor/fined_expmat.bed')
-fine_nameit('compare_nc/result/Z_PAP/expmat.bed','compare_nc/result/Z_PAP/fined_expmat.bed')
+fine_nameit('Sample_name/expmat.bed','Sample_name/fined_expmat.bed')
 
 
 
