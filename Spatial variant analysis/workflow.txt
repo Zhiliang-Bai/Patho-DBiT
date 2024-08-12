@@ -1,7 +1,6 @@
 This is the order of the workflow:
 bash pipeline/BWAmap.sh
-bash pipeline/LM0623-hg38_mut.sh
-bash pipeline/Mut_Matrix.sh	
+bash pipeline/analyzeVariant.sh
 bash pipeline/analyzeCNV.sh	
 
 
