@@ -1,6 +1,6 @@
 #!/bin/bash
 # script to run rMATS-turbo for spatial RNA-seq data
-rmats="Path to rmats-turbo/rmats.py" # https://github.com/Xinglab/rmats-turbo
+rmats="/Path to rmats-turbo folder/rmats.py" # https://github.com/Xinglab/rmats-turbo
 split_py=split_bam_by_clu.py
 
 # input bam
