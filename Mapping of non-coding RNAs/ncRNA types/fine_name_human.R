@@ -44,6 +44,6 @@ fine_nameit <- function(bedin,bedout){
   datain[,3] = outgene_name
   write.table(datain, file = bedout, row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
 }
-fine_nameit('expmat.bed','fined_expmat.bed')
+fine_nameit('Sample_name/expmat.bed','Sample_name/fined_expmat.bed')
 
 
