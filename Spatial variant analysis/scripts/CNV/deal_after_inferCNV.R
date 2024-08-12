@@ -12,7 +12,7 @@ matin = "infercnv.20_HMM_predHMMi6.leiden.hmm_mode-subclusters.Pnorm_0.5.repr_in
 #"100x7","18"
 #"100x8","8"
 #"100x9","3"
-cluster_file = "scRNAmir/data/FFPE/Clusters/Cluster_and_spatial.id.csv"
+cluster_file = "Cluster_and_spatial.id.csv"
 
 
 datain = read.table(matin, header = TRUE, sep = ' ', stringsAsFactors = FALSE)
