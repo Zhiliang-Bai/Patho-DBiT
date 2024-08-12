@@ -4,7 +4,7 @@ library(parallel)
 library(stringr)
 
 
-data = fread('result/VarMAT/Sample/RNAvar_SNVcluster/mutratiostr.mat')
+data = fread('VarMAT_RNAvar_SNVcluster/mutratiostr.mat')
 colnames(data) = gsub('\\..*$','',gsub('^.*/','',colnames(data)))
 
 data[, c("dedup_nor_1", "dedup_nor_2") := tstrsplit(dedup_nor, ",", fixed = TRUE)]
@@ -24,4 +24,4 @@ sum(aa[,4]/aa[,5] > aa[,2]/aa[,3],na.rm = TRUE)/(dim(aa)[1]);print(dim(aa)[1])
 aa = data[tumor_1 >= 0.25* tumor_2 & tumor_1  > 10 & tumor_1 * normal_2  >  tumor_2 * normal_1 ]
 sum(aa[,4]/aa[,5] > aa[,2]/aa[,3],na.rm = TRUE)/(dim(aa)[1]);print(dim(aa)[1])
 
-write.table(aa[,1], file = "result/VarMAT/Pixel/FiltRNAvar_SNVcluster/PASS.site.pos.txt", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
+write.table(aa[,1], file = "VarMAT_FiltRNAvar_SNVcluster/PASS.site.pos.txt", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
