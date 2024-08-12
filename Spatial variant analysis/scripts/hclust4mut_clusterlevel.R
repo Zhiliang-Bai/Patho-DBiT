@@ -8,9 +8,21 @@ library(proxy)
 library(data.table)
 library(digest)
 
-cluster_file = "scRNAmir/data/FFPE/Clusters/cluster_and_position_LM0623_Large_RNAsomatic.csv"
-mutinfile = 'result/VarMAT/Pixel/StrictFiltDNAvar/mutratiostr.mat'
-cluster_file = "scRNAmir/data/FFPE/Clusters/Cluster_and_spatial.id_LM0623_Large.csv"
+
+# An example of Cluster_and_spatial.id.csv
+#"","SCT_snn_res.1.2"
+#"100x1","8"
+#"100x2","4"
+#"100x3","15"
+#"100x4","15"
+#"100x5","4"
+#"100x6","3"
+#"100x7","18"
+#"100x8","8"
+#"100x9","3"
+cluster_file = "Cluster_and_spatial.id.csv
+mutinfile = 'VarMAT_ChisqFiltDNAvar/mutratiostr.mat'
+
 
 datain <- fread(mutinfile, header = TRUE)
 colnames(datain) = gsub('^.*/','',gsub('\\..*$','',colnames(datain)))
