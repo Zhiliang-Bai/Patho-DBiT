@@ -4,7 +4,7 @@ library(parallel)
 library(stringr)
 
 
-data = fread('result/VarMAT/Sample/DNAvar/mutratiostr.mat')
+data = fread('VarMAT_DNAvar/mutratiostr.mat')
 colnames(data) = gsub('\\..*$','',gsub('^.*/','',colnames(data)))
 
 data[, c("dedup_nor_1", "dedup_nor_2") := tstrsplit(dedup_nor, ",", fixed = TRUE)]
@@ -44,6 +44,6 @@ col_sums <- unlist(aa[, lapply(.SD, sum), .SDcols = 2:ncol(aa)])
 (col_sums[7]/col_sums[8])/(col_sums[5]/col_sums[6])
 
 
-write.table(aa[,1], file = "result/VarMAT/Pixel/ChisqFilterSomaticMut/PASS.site.pos.txt", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
+write.table(aa[,1], file = "VarMAT_ChisqFiltDNAvar/PASS.site.pos.txt", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
 
 
