@@ -1,6 +1,6 @@
 library(infercnv)
 
-matin = "result/CNV/inferCNV/result/infercnv.20_HMM_predHMMi6.leiden.hmm_mode-subclusters.Pnorm_0.5.repr_intensities.observations.txt"
+matin = "infercnv.20_HMM_predHMMi6.leiden.hmm_mode-subclusters.Pnorm_0.5.repr_intensities.observations.txt"
 # An example of Cluster_and_spatial.id.csv
 #"","SCT_snn_res.1.2"
 #"100x1","8"
@@ -27,4 +27,4 @@ matclu7 = datain[,clu7] > 1
 ratioclu7 = apply(matclu7,1,FUN=function(xx){sum(xx)/length(xx)})
 
 
-write.table(x = transloc[ratioclu7 >= 0.5,], file = "result/CNV/inferCNV/result/select.bed", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
+write.table(x = transloc[ratioclu7 >= 0.5,], file = "select.bed", row.names = FALSE, col.names = FALSE, sep="\t", quote = FALSE, append = FALSE)
