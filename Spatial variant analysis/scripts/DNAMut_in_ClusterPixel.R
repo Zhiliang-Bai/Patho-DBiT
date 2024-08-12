@@ -1,10 +1,21 @@
 library(ggplot2)
 library(Cairo)
 
-clusters = read.table("scRNAmir/data/FFPE/Clusters/Cluster_and_spatial.id_LM0623_Large.csv", header = TRUE, sep = ',', stringsAsFactors = FALSE)
+# An example of Cluster_and_spatial.id.csv
+#"","SCT_snn_res.1.2"
+#"100x1","8"
+#"100x2","4"
+#"100x3","15"
+#"100x4","15"
+#"100x5","4"
+#"100x6","3"
+#"100x7","18"
+#"100x8","8"
+#"100x9","3"
+clusters = read.table("Cluster_and_spatial.id.csv", header = TRUE, sep = ',', stringsAsFactors = FALSE)
 clusterkinds = unique(clusters[,2])
 
-mutin = fread('result/VarMAT/Pixel/FiltDNAvar/mutratiostr.mat')
+mutin = fread('VarMAT_ChisqFiltDNAvar/mutratiostr.mat')
 mutname  =  mutin[,1:2]
 mutin  =  mutin[,-(1:2)]
 colnames(mutin) = gsub('\\..*$', '', gsub("^.*/",'',colnames(mutin)))
@@ -52,8 +63,8 @@ fordraw = data.frame(mutdepthframe[,1],t(apply(mutdepthframe,1,FUN=function(xx){
 colnames(fordraw) = c('Cluster','Estimate', 'Q2.5', 'Q97.5')
 fordraw = arrange(fordraw,Estimate)
 fordraw$Cluster = factor(fordraw$Cluster, levels = fordraw$Cluster)
-CairoPNG(filename = 'result/VarMAT/Pixel/FiltDNAvar/cluster_CI.png',width = 500,height = 600)
+CairoPNG(filename = 'cluster_CI.png',width = 500,height = 600)
 p = ggplot() + geom_pointrange(data=fordraw, mapping=aes(x=Cluster, y=Estimate, ymin=Q2.5, ymax=Q97.5, color = Estimate), fatten = 2, size=0.5)  + scale_color_gradient(low=rgb(192,188,221,max = 255), high=rgb(111,95,164,max = 255)) + xlab('') + ylab('') + coord_flip() + theme(panel.grid.major.y = element_blank(),panel.grid.major.x = element_line(color = 'black', size = 0.03), panel.border = element_rect(fill = NA, color = 'black', size = 0.03), panel.background = element_blank()) + labs(color='Mutation rate') + xlab('Cluster')
 print(p)
 dev.off()
-write.table(fordraw, file = "result/VarMAT/Pixel/FiltDNAvar/cluster_CI.txt", row.names = FALSE, col.names = TRUE, sep="\t", quote = FALSE, append = FALSE)
+write.table(fordraw, file = "cluster_CI.txt", row.names = FALSE, col.names = TRUE, sep="\t", quote = FALSE, append = FALSE)
