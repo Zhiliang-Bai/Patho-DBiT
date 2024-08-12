@@ -4,7 +4,7 @@ rmats="Path to rmats-turbo/rmats.py" # https://github.com/Xinglab/rmats-turbo
 split_py=split_bam_by_clu.py
 
 # input bam
-in_bam="Path to input spatial RNA-seq bam" # input bam
+in_bam="Path to input Patho-DBiT bam" # input bam
 read_len=120 # read length
 
 # spatial information
