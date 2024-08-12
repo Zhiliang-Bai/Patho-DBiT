@@ -1,7 +1,7 @@
-inputfq1=r1.fq.gz
-inputfq2=r2.fq.gz
-outputfolder=result/Cancer/
-groupname='@RG\tID:LM0623\tSM:LM0623\tPL:illumina\tLB:LM0623'
+inputfq1=Sample1_Normal/r1.fq.gz
+inputfq2=Sample1_Normal/r2.fq.gz
+outputfolder=result/Sample1_Normal/
+groupname='@RG\tID:LM0623\tSM:LM0623\tPL:illumina\tLB:Sample1_Normal'
 indexfq=Homo_sapiens.GRCh38.dna.fa
 
 # make sure BWA GATK SAMtools are all available
@@ -19,10 +19,10 @@ indexfq=Homo_sapiens.GRCh38.dna.fa
   gatk MarkDuplicates CREATE_INDEX=true INPUT=$sortedbam O=$markedbam M=${markedbam}.txt VALIDATION_STRINGENCY=STRICT
 }
 
-inputfq1=Normal_1.fq.gz
-inputfq2=Normal_2.fq.gz
-outputfolder=result//Normal/
-groupname='@RG\tID:Normal\tSM:Normal\tPL:illumina\tLB:Normal'
+inputfq1=Sample2_Tumor/Normal_1.fq.gz
+inputfq2=Sample2_Tumor/Normal_2.fq.gz
+outputfolder=result/Sample2_Tumor/
+groupname='@RG\tID:Normal\tSM:Normal\tPL:illumina\tLB:Sample2_Tumor'
   
 
 {
@@ -40,8 +40,8 @@ groupname='@RG\tID:Normal\tSM:Normal\tPL:illumina\tLB:Normal'
   gatk MarkDuplicates CREATE_INDEX=true INPUT=$sortedbam O=$markedbam M=${markedbam}.txt VALIDATION_STRINGENCY=STRICT
 }
 
-samtools view -@ 16 -F 1024 -b result/Normal/marked.bam -o dedup_nor.bam
-samtools view -@ 16 -F 1024 -b result/Cancer/marked.bam  -o dedup_tmr.bam
+samtools view -@ 16 -F 1024 -b result/Sample2_Tumor/marked.bam -o dedup_nor.bam
+samtools view -@ 16 -F 1024 -b result/Sample2_Tumor/marked.bam  -o dedup_tmr.bam
 
 
 
