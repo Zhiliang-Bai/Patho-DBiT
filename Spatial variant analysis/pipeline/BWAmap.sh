@@ -40,7 +40,7 @@ groupname='@RG\tID:Normal\tSM:Normal\tPL:illumina\tLB:Sample2_Tumor'
   gatk MarkDuplicates CREATE_INDEX=true INPUT=$sortedbam O=$markedbam M=${markedbam}.txt VALIDATION_STRINGENCY=STRICT
 }
 
-samtools view -@ 16 -F 1024 -b result/Sample2_Tumor/marked.bam -o dedup_nor.bam
+samtools view -@ 16 -F 1024 -b result/Sample1_Normal/marked.bam -o dedup_nor.bam
 samtools view -@ 16 -F 1024 -b result/Sample2_Tumor/marked.bam  -o dedup_tmr.bam
 
 
