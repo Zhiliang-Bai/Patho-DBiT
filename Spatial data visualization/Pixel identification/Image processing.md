@@ -1,4 +1,4 @@
-Useful pixels were generated from the Matlab script. Basically, it divides the real tissue microscope image into 50x50 small sqaures which match with DBiT-seq pixels. The intensity inside each pixel was calculated and only pixels have signals above a threashold will be selected.
+Useful pixels are identified by dividing the tissue scan image into 50x50 or 100x100 pixel squares that align with Patho-DBiT microfluidic barcoded pixels. The intensity within each square is calculated, and only those with signals above a set threshold are retained.
 
 There two steps: To run the Matlab script "Pixel_identification.m"
 
