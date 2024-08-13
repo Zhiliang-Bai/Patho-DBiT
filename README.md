@@ -49,6 +49,10 @@ The pipeline also requires a reference genome fasta file, a GTF annotation file,
 
 ## 5. Spatial single nucleotide variant (SNV) analysis
 Scripts are included in the "Spatial variant analysis" folder.
+### Map WGS data
+Run 'BWAmap.sh' in the "pipeline" folder to perform WGS data alignment and analysis.
+### Generate spatial SNV matrix
+Run 'analyzeVariant.sh' in the "pipeline" folder to generate mutation-by-pixel expression matrix.
 
 ## 6. Spatial RNA splicing dynamics analysis
 Scripts are included in the "Spatial RNA dynamics" folder.
