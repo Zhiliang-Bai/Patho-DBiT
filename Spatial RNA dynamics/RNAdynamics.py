@@ -87,10 +87,6 @@ scv.pl.velocity_embedding_stream(adata, basis='X_umap', save='Sample_Name_umap_a
 scv.pl.velocity_embedding_stream(adata, figsize = (8,6),basis='X_umap', save='Sample_Name_UMAP.svg' ,legend_fontsize = 12,color = "clusters",palette = ident_colours)
 scv.pl.velocity_embedding_stream(adata, fontsize = 0, size = 200, color = "clusters", alpha= 0.8, palette = ident_colours, save='Sample_Name_spatial_UMAP_V4.svg', figsize = (10,10), arrow_color='black', density=4, basis='X_Space',legend_loc='none')
 
-scv.tl.score_genes_cell_cycle(adata)
-scv.pl.scatter(adata, color_gradients=['S_score', 'G2M_score'], figsize = (8,6), save='Sample_Name_Large_cell_cycle.svg',smooth=True, perc=[5, 95])
-
-
 
 scv.tl.velocity_confidence(adata)
 keys = 'velocity_length', 'velocity_confidence'
