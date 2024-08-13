@@ -30,8 +30,9 @@ Run 'Convert_ENSEMBL_to_gene_name.sh' to annotate the matrix output from the ST 
 ## 2. Read mapping of non-coding RNA species
 Scripts are included in the "Mapping of non-coding RNAs" folder.
 ### Build reference genomic data of various non-coding RNA species
-
-### Generate spatial expression matrix of non-coding RNAs
+Run 'Build_GTF_Pipeline.sh' in the "GRCh38" or "mm39" folder to build the genomic reference for human or mouse.
+### Get expression profile of non-coding RNAs
+Run 'count_ncRNAs.sh' in the "ncRNA types" folder.
 
 ## 3. Spatial alternative splicing analysis
 Scripts are included in the "Spatial alternative splicing" folder.
