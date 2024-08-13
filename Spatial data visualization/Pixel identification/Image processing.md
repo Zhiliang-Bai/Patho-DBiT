@@ -1,8 +1,8 @@
 Useful pixels are identified by dividing the tissue scan image into 50x50 or 100x100 pixel squares that align with Patho-DBiT microfluidic barcoded pixels. The intensity within each square is calculated, and only those with signals above a set threshold are retained.
 
-There two steps: To run the Matlab script "Pixel_identification.m"
+The Photoshop software will be used to generate a black and white image for pixel identification following the following steps:
 
-1. Use Photoshop or other photo editing software to crop the microscope image into exactly the size of the DBiT-seq covering area. For example, the upperleft of the image should be the 1x1 pixel of DBiT-seq, and the lowerright is the 50x50. No space is allowed. See "FFPE-2.jpg" for example.
+1. Use Photoshop to crop the tissue scan image to maintain only region of interest that Patho-DBiT covered. The upperleft of the image should be the 1x1 pixel, and the lowerright is the 50x50. No space is allowed. See Figure 1 for example.
 
 2. Use threashold function under Image->adjustment menu to adjust the image, so that your tissue is black and background is compeletely white.
 3. Invert the color of the image. The final image is like "FFPE-2_BW.jpg" in the Example_Data folder.
