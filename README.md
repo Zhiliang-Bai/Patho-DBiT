@@ -15,7 +15,7 @@ The Read 2 sequence needs to be reformated to run [ST Pipeline](https://github.c
 
 To reformat the Read 2, run 'FASTQ_process.sh'.
 
-All raw Read 1 and reformatted Read 2 files can be downloaded from the NCBI Gene Expression Omnibus (GEO) under the accession number XXXXXXXX 
+All raw Read 1 and reformatted Read 2 files can be downloaded from the NCBI Gene Expression Omnibus (GEO) under the accession number [GSE274641](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE274641) 
 
 ### Run ST Pipeline
 Run 'ST_Pipeline.sh' with Processed_R2.fastq.gz and Raw_R1.fastq.gz as inputs.
