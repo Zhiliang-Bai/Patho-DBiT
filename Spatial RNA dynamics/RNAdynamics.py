@@ -13,7 +13,6 @@ import scipy.sparse as sp
 # intron.tsv: gene-pixel count matrix which mapped to intron region of genes 
 exonin = pd.read_csv('exon.tsv', sep='\t', index_col=0)
 intronin = pd.read_csv('intron.tsv', sep='\t', index_col=0)
-#np.unique(intronin.columns == exonin.columns)
 
 
 
