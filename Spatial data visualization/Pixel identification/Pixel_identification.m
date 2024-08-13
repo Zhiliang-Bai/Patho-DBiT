@@ -1,13 +1,6 @@
-% This matlab script will analyze the tissue image of DBiT-seq samples and
-% identify the pixels that are on top tissue. The 'position.txt' generated
-% include all the pixels that are on top of a tissue. 
+% This MATLAB script analyzes the tissue image of Patho-DBiT samples to identify pixels that overlap with tissue areas. The resulting "position.txt" file contains a list of all pixels that are located on top of the tissue.
 
-% Enter the Example_Data folder
-
-% image (cropped exactly to the size of working region of DBiT-seq) needs
-% to be processed to make it black (background) and white (tissue)
-% beforehand, see FFPE-2_BW.jpg for example
-I = imread('Mouse_Brain_Reg.9_50um.jpg'); 
+I = imread('Your image.jpg'); 
 I = rgb2gray(I);
 BW = imbinarize(I);
 
