@@ -1,7 +1,0 @@
-This is the order of the workflow:
-bash pipeline/BWAmap.sh
-bash pipeline/analyzeVariant.sh
-bash pipeline/analyzeCNV.sh	
-
-
-
