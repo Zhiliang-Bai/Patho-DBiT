@@ -49,6 +49,7 @@ X_umap_sorted   = exonin_index_df.merge(X_umap, on = "pixel").iloc[:,1:]
 clusters_sorted = exonin_index_df.merge(clusters, on = "pixel").iloc[:,1:]
 
 
+
 genecolnames = exonin.columns
 exonin = sp.csr_matrix(exonin.values)
 intronin = sp.csr_matrix(intronin.values)
@@ -70,15 +71,25 @@ aa.iloc[:,1:2] = 101 - aa.iloc[:,1:2]
 #aa = (aa-25)/100
 loomdata.obsm['X_Space'] = aa.values.astype('float64')
 
-adata2 = loomdata.copy()
+adata = loomdata.copy()
 
-scv.pp.filter_and_normalize(adata2,min_shared_counts=20,enforce=True)#
-scv.pp.moments(adata2,n_pcs=30, n_neighbors=30)#
-scv.tl.recover_dynamics(adata2)
-scv.tl.velocity(adata2, mode = "steady_state")
-scv.tl.velocity_graph(adata2)
-scv.tl.latent_time(adata2)
-scv.pl.velocity_embedding_stream(adata2, basis='X_umap', save='Sample_name_umap_all_arrow2.pdf' ,color = "clusters")
+scv.pp.filter_and_normalize(adata,min_shared_counts=20, enforce=True)#
+scv.pp.moments(adata,n_pcs=30, n_neighbors=30)#
+scv.tl.recover_dynamics(adata)
+scv.tl.velocity(adata, mode = "steady_state")
+scv.tl.velocity_graph(adata)
+scv.tl.latent_time(adata)
+
+
+
+ident_colours = {'C0':'#8497B0', 'C1':'#878787', 'C2':'#F0CE58', 'C3':'#EB545C','C4':'#D7EF9B', 'C5':'#DCEAF7', 'C6':'#FFEE00','C7':'#00475F',
+'C8':'#F297A7','C9':'#ABDDDE','C10':'#97CCF6','C11':'#B487B7','C12':'#1D65A6','C13':'#F2A104','C14':'#FC6FCF','C15':'#0FFFFF',
+'C16':'#289E92','C17':'#C3FF00','C18':'#BC589B','C19':'#8ED973'}
+scv.pl.velocity_embedding_stream(adata, basis='X_umap', save='LM0623_umap_all_arrow2.pdf' ,color = "clusters",palette = ident_colours)
+
+scv.pl.velocity_embedding_stream(adata, figsize = (8,6),basis='X_umap', save='LM0623_UMAP.svg' ,legend_fontsize = 12,color = "clusters",palette = ident_colours)
+
+
 
 adata3 = adata2[np.isin(adata2.obs['clusters'], ['6','7','14','18']),]
 scv.pp.neighbors(adata3)
