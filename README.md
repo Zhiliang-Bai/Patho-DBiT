@@ -11,7 +11,7 @@ Read 1: Contains the cDNA sequence
 
 Read 2: Contains the spatial Barcode A, Barcode B and UMIs
 ### Reformat FASTQ Read 2 file
-The Read 2 sequence needs to be reformated to run [ST Pipeline](https://github.com/SpatialTranscriptomicsResearch/st_pipeline), as explained in the following figure. Due to experimental design of Patho-DBiT, the Read 2 is equal to the "Read 1" in ST pipeline, while Read 1 will be the "Read 2".
+The Read 2 sequence needs to be reformated to run [ST Pipeline](https://github.com/SpatialTranscriptomicsResearch/st_pipeline), as explained in the 'Reformat_Read2.md' file. 
 
 To reformat the Read 2, run 'FASTQ_process.sh'.
 
